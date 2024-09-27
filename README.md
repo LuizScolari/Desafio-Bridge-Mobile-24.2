@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/zfkKTNKA)
 # Beat - Aplicativo de Música 🎵
 
 Bem-vindo ao **Beat**, o aplicativo que está sendo desenvolvido para competir com gigantes do streaming de música como **Spotify** e **Deezer**. Este projeto faz parte do processo seletivo do **Laboratório Bridge**, e você foi selecionado para contribuir com o desenvolvimento de funcionalidades importantes do app.
