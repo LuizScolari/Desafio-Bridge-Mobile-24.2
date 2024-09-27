@@ -34,7 +34,7 @@ class _TopTabState extends State<TopTab> {
 
           return ListView(
             children: <Widget>[
-              const TabTitle(title: 'Lançamentos'),
+              const TabTitle(title: 'Fresh Hits'),
               for (final track in top)
                 TrackItem(
                   track: track,
