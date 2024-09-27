@@ -32,10 +32,22 @@ class _TopTabState extends State<TopTab> {
         } else {
           final top = snapshot.data!;
 
+          // Filtrar músicas com previewUrl e sem previewUrl
+          final tracksWithPreviewUrl =
+              top.where((track) => track.previewUrl != null).toList();
+          final tracksWithoutPreviewUrl =
+              top.where((track) => track.previewUrl == null).toList();
+
+          // Combinar as listas, colocando as músicas com previewUrl primeiro
+          final sortedTracks = [
+            ...tracksWithPreviewUrl,
+            ...tracksWithoutPreviewUrl
+          ];
+
           return ListView(
             children: <Widget>[
               const TabTitle(title: 'Fresh Hits'),
-              for (final track in top)
+              for (final track in sortedTracks)
                 TrackItem(
                   track: track,
                   tracks: top,
