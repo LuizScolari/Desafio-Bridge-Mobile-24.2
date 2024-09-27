@@ -50,14 +50,18 @@ class _BackButton extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: Padding(
         padding: const EdgeInsets.only(top: 20, left: 20),
-        child: Material(
-          color: const Color(0x70FFFFFF),
-          borderRadius: BorderRadius.circular(24),
-          child: ElevatedButton.icon(
-            onPressed: onPress,
-            label: const Text('Voltar'),
-            icon: const Icon(Icons.arrow_back),
+        child: ElevatedButton.icon(
+          onPressed: onPress,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black, // Define a cor de fundo como branca
+            foregroundColor:
+                Colors.white, // Define a cor do texto e do ícone como preto
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
+            ),
           ),
+          label: const Text('Voltar'),
+          icon: const Icon(Icons.arrow_back),
         ),
       ),
     );
