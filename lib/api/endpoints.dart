@@ -1,6 +1,6 @@
 abstract class Endpoints {
   static const _baseUrl = 'https://caio-musicplayer.builtwithdark.com/';
-  static const _email = 'higor.oliveira@bridge.ufsc.br'; // Altere seu e-mail aqui
+  static const _email = 'luizrpscolari@gmail.com'; // Altere seu e-mail aqui
 
   static String track(String id) {
     return '$_baseUrl/tracks/$id';
