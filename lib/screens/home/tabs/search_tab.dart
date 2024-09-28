@@ -83,13 +83,20 @@ class _SearchTabState extends State<SearchTab> {
         const SizedBox(height: 8),
         SearchInput(controller: _textController),
         const SizedBox(height: 24),
-        if (_loading) const Center(child: CircularProgressIndicator()) else if (_results.isEmpty) _buildEmptyState() else _buildResultsList(),
+        if (_loading)
+          const Center(child: CircularProgressIndicator())
+        else if (_results.isEmpty)
+          _buildEmptyState()
+        else
+          _buildResultsList(),
       ],
     );
   }
 
   Widget _buildEmptyState() {
-    final message = _textController.text.isEmpty ? 'Pesquise músicas e artistas! \nBasta clicar no campo de busca.' : 'Nenhum resultado encontrado.';
+    final message = _textController.text.isEmpty
+        ? 'Pesquise músicas e artistas! \nBasta clicar no campo de busca.'
+        : 'Nenhum resultado encontrado.';
 
     return Center(
       child: Column(
@@ -156,6 +163,7 @@ class SearchInput extends StatelessWidget {
                 Icons.search,
                 color: BeatColors.mediumGrey,
               ),
+              contentPadding: EdgeInsets.symmetric(vertical: 12),
             ),
             style: const TextStyle(fontSize: 16, color: Colors.black),
           ),
