@@ -25,7 +25,11 @@ class FavoriteButton extends StatelessWidget {
     return IconButton(
       onPressed: enabled && editable
           ? () {
-              // faça o controle aqui.
+              if (liked) {
+                favorites.remove(track);
+              } else {
+                favorites.add(track);
+              }
             }
           : null,
       icon: AnimatedSwitcher(
@@ -45,8 +49,12 @@ class FavoriteButton extends StatelessWidget {
     }
 
     return Image.asset(
-      liked ? 'assets/icons/heart_filled.png' : 'assets/icons/heart_outline.png',
-      color: enabled ? (liked ? activeColor : Colors.white) : BeatColors.disabledColor,
+      liked
+          ? 'assets/icons/heart_filled.png'
+          : 'assets/icons/heart_outline.png',
+      color: enabled
+          ? (liked ? activeColor : Colors.white)
+          : BeatColors.disabledColor,
       width: 24,
       height: 24,
       key: Key(liked ? 'liked' : 'not_liked'),
