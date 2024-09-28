@@ -70,7 +70,8 @@ class _ArtistScreenState extends State<ArtistScreen> {
       return const Center(child: Text('Artista não encontrado'));
     }
 
-    final enabledTracks = artist.topTracks.where((track) => track.previewUrl != null).toList();
+    final enabledTracks =
+        artist.topTracks.where((track) => track.previewUrl != null).toList();
 
     return ListView(
       children: <Widget>[
@@ -89,8 +90,8 @@ class _ArtistScreenState extends State<ArtistScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Text(
-                  '1.000 seguidores',
+                Text(
+                  '${artist.followers} seguidores', //adicionando o valor de seguidores
                   softWrap: false,
                   overflow: TextOverflow.fade,
                   style: TextStyle(
@@ -101,7 +102,9 @@ class _ArtistScreenState extends State<ArtistScreen> {
                 ),
                 const SizedBox(height: 16),
                 BeatButton(
-                  onPressed: enabledTracks.isNotEmpty ? () => _onPlayPressed(context, enabledTracks) : null,
+                  onPressed: enabledTracks.isNotEmpty
+                      ? () => _onPlayPressed(context, enabledTracks)
+                      : null,
                   child: const Text('TOCAR'),
                 ),
               ],
