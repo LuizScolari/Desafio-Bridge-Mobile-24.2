@@ -54,8 +54,14 @@ class _FavoritesTabState extends State<FavoritesTab> {
   }
 
   Widget _buildFavoritesList(List<Track> favorites) {
+    // Cria uma cópia da lista e ordena por nome (ordem alfabética)
+    List<Track> sortedFavorites = List.from(favorites)
+      ..sort((a, b) => a.name.compareTo(b.name)); // Ordena pelo nome da música
+
     return Column(
-      children: favorites.map((track) => TrackItem(track: track, tracks: favorites)).toList(),
+      children: sortedFavorites
+          .map((track) => TrackItem(track: track, tracks: sortedFavorites))
+          .toList(),
     );
   }
 }
