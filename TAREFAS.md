@@ -14,7 +14,7 @@ Marque aqui quais tarefas você conseguiu desenvolver parcialmente ou completame
 - [x] Tarefa 6: Organize Seus Favoritos – Ordem Alfabética é a Nova Onda!
 - [x] Tarefa 7: Seguidores em Alta! Adicione a Quantidade de Seguidores para Cada Artista
 - [x] Tarefa 8: Barra de Busca Desalinhada – Vamos Alinhar Tudo!
-- [ ] Tarefa 9: Nova Tela de Álbum – Hora de Brilhar com o Protótipo!
+- [x] Tarefa 9: Nova Tela de Álbum – Hora de Brilhar com o Protótipo!
 - [ ] Tarefa 10: Ajustando o Tempo – Resolva o Bug do Player de Áudio!
 
 # Tarefas bônus
