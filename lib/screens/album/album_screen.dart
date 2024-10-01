@@ -1,10 +1,9 @@
+import 'package:beat/api/albums.dart'; 
 import 'package:beat/models.dart';
 import 'package:beat/screens/routes.dart';
 import 'package:beat/widgets/beat_scaffold.dart';
 import 'package:beat/widgets/image_gradient_background.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:beat/widgets/favorite_button.dart';
 import 'package:beat/widgets/track_menu.dart';
 
@@ -34,20 +33,11 @@ class _AlbumScreenState extends State<AlbumScreen> {
 
   Future<void> _loadAlbum() async {
     try {
-      final response = await http.get(
-        Uri.parse(
-            'https://caio-musicplayer.builtwithdark.com/albums/${widget.albumId}'),
-      );
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        setState(() {
-          _album = FullAlbum.fromJson(data);
-          _loading = false;
-        });
-      } else {
-        throw Exception('Erro ao carregar o álbum');
-      }
+      final album = await fetchAlbum(widget.albumId);
+      setState(() {
+        _album = album;
+        _loading = false;
+      });
     } catch (e) {
       setState(() {
         _loading = false;
@@ -84,7 +74,6 @@ class _AlbumScreenState extends State<AlbumScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Uso de ImageGradientBackground para a imagem do álbum
           ImageGradientBackground(
             backgroundUrl: _album!.image ?? 'https://placekitten.com/300/300',
             foreground: Padding(
@@ -92,7 +81,6 @@ class _AlbumScreenState extends State<AlbumScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  // Nome do álbum e botão TOCAR no mesmo Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -117,7 +105,6 @@ class _AlbumScreenState extends State<AlbumScreen> {
                       ),
                     ],
                   ),
-                  // Nome do artista e quantidade de músicas
                   Row(
                     children: [
                       Text(
@@ -130,7 +117,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
                         '•',
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
-                      const SizedBox(width: 8), 
+                      const SizedBox(width: 8),
                       Text(
                         '${_album!.tracks.length} músicas',
                         style:
@@ -142,7 +129,6 @@ class _AlbumScreenState extends State<AlbumScreen> {
               ),
             ),
           ),
-          // Lista de faixas do álbum
           ..._album!.tracks.map((track) {
             return ListTile(
               contentPadding: const EdgeInsets.symmetric(horizontal: 25),
@@ -152,16 +138,16 @@ class _AlbumScreenState extends State<AlbumScreen> {
               ),
               title: Text(
                 track.name,
-                overflow: TextOverflow.fade, // Usando fade
-                softWrap: false, // Impedindo quebra de linha
-                maxLines: 1, // Limitando a uma linha
+                overflow: TextOverflow.fade,
+                softWrap: false,
+                maxLines: 1,
               ),
               subtitle: Text(
                 track.artistsNames,
                 style: const TextStyle(color: Colors.grey),
-                overflow: TextOverflow.fade, // Usando fade no subtítulo também
-                softWrap: false, // Impedindo quebra de linha
-                maxLines: 1, // Limitando a uma linha
+                overflow: TextOverflow.fade,
+                softWrap: false,
+                maxLines: 1,
               ),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
